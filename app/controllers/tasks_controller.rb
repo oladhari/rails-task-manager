@@ -32,10 +32,6 @@ class TasksController < ApplicationController
   end
 
   private
-  def new_task?
-    sync_with_transaction_state
-    @new_task
-  end
 
   def set_task
     @task = Task.find(params[:id])

@@ -28,11 +28,14 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-
     redirect_to tasks_path
   end
 
   private
+  def new_task?
+    sync_with_transaction_state
+    @new_task
+  end
 
   def set_task
     @task = Task.find(params[:id])
